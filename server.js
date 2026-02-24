@@ -43,6 +43,10 @@ async function getBrowser() {
 
 // 공통 스크래핑 로직 함수
 async function scrapeCharacter(nickname, serverId = 1006) {
+    if (!nickname || nickname === 'undefined') {
+        console.error(`[에러] 유효하지 않은 닉네임 요청입니다.`);
+        return { success: false, error: "INVALID_NICKNAME" };
+    }
     console.log(`[검색] ${nickname} (서버: ${serverId}) 시작...`);
 
     let page = null;
